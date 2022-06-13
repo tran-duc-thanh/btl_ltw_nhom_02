@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #333333;
+}
+
+header {
+    background-color: #333333;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-variant: small-caps;
+    font-size: 3.2rem;
+    padding: 0.8rem;
+    color: #d36d00;
+    text-shadow: 1px 2px #000000;
+    text-align: center;
+    transition: all 0.5s ease-in;
+}
+
+header h1:hover {
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #d36d00;
+}
+
+nav > a {
+    color: #000000;
+    font-family: 'Roboto Light', sans-serif;
+    font-size: 1.2rem;
+    font-variant: small-caps;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.5s;
+    padding: 0.5rem 0.8rem;
+}
+
+nav > a:hover, nav > a.chonVao {
+    font-size: 1.4rem;
+    color: #d36d00;
+    background-color: #333333;
+}
+
+/* main */
+
+.thanTrang {
+    background-color: #ffe6cc;
+    display: flex;
+    justify-content: center;
+}
+
+.thanTrang-hinhNen {
+    position: relative;
+    background-image: url(../img/hinhNen.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 45rem;
+    width: 100%;
+    opacity: 1;
+    z-index: 1;
+}
+
+.dangNhap {
+    margin-top: 5%;
+    max-height: 75%;
+    background-color: #ffffff;
+}
+
+.locin {
+    text-align: center;
+}
+
+.dangKy {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.noiDung {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    margin: 1.6rem;
+    text-align: left;
+    font-family: 'Oxygen', sans-serif;
+}
+
+section h2 {
+    font-variant: small-caps;
+    transition: all 0.5s ease;
+}
+
+section h2:hover {
+    font-size: 1.9rem;
+}
+
+section h3 {
+    font-size: 1rem;
+}
+
+article {
+    margin: 1.6rem;
+}
+
+article h4 a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.5s;
+}
+
+article h4 a:hover {
+    font-variant: small-caps;
+    color: #d36d00;
+    font-size: 1.3rem;
+}
+
+.anh {
+    height: auto;
+    width: 100%;
+    max-width: 6rem;
+    transition: all 0.5s ease-out;
+}
+
+.anh:hover {
+    max-width: 8rem;
+}
+
+/* Footer */
+
+footer {
+    background-color: #333333;
+    color: #afafaf;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+footer h3 {
+    font-size: 1.4rem;
+    font-variant: small-caps;
+    font-family: 'Mukta', sans-serif;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #7f7f7f;
+}
+
+footer ul li {
+    margin: 0.5rem;
+    padding: 0.2rem;
+}
