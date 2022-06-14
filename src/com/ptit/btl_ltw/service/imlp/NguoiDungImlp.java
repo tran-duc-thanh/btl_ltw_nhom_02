@@ -22,4 +22,5 @@ public class NguoiDungImlp implements NguoiDungService {
     public void themTaiKhoan(NguoiDung u) {
         ud.themTaiKhoan(u);
     }
+    
 }

@@ -1,10 +1,10 @@
 package com.ptit.btl_ltw.dao;
 
-public class TheLoaiDAO extends DAO{
+import java.sql.Connection;
 
-    public TheLoaiDAO () {
-        super();
-    }
+public class TheLoaiDAO {
+
+	private Connection con = new DAO().getConnection();
 
 
 }

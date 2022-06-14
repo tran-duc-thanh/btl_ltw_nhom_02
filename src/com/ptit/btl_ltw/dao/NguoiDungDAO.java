@@ -5,11 +5,13 @@ import com.ptit.btl_ltw.model.NguoiDung;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.sql.Connection;
 
-public class NguoiDungDAO extends DAO{
+public class NguoiDungDAO {
+	
+	private Connection con = new DAO().getConnection();
 
     public NguoiDungDAO () {
-        super();
     }
 
     public NguoiDung kiemTraDangNhap (NguoiDung u) {
@@ -82,6 +84,6 @@ public class NguoiDungDAO extends DAO{
 //        user.setTen("user");
 //        user.setUsername("user");
 //        user.setPassword("1234567");
-//        test.themTaiKhoan(user);
+//        System.out.println(test.kiemTraDangNhap(user).getUsername());
 //    }
 }
