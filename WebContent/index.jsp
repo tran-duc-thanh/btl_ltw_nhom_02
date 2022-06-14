@@ -1,3 +1,4 @@
+<%@page import="com.ptit.btl_ltw.model.NguoiDung"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,14 @@
 <nav>
     <a href="#" class="chonVao">Trang chủ</a>
     <a href="theLoai.jsp">Bài viết</a>
-    <a href="dangNhap.jsp">Đăng nhập</a>
+    <% NguoiDung nguoiDung = (NguoiDung) request.getAttribute("nguoiDung"); %>
+    <a href="dangNhap.jsp"><%
+    	if (nguoiDung != null){
+    		out.print(nguoiDung.getTen());
+    	} else {
+    		out.print("Đăng Nhập");
+    	}
+    %></a>
 </nav>
 
 <div class="thanTrang">

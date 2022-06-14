@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ptit.btl_ltw.dao.NguoiDungDAO;
 import com.ptit.btl_ltw.model.NguoiDung;
+import com.ptit.btl_ltw.service.NguoiDungService;
+import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
 
 @WebServlet("/dangNhap")
 public class DangNhapController extends HttpServlet {
@@ -20,10 +22,10 @@ public class DangNhapController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private NguoiDungDAO nguoiDungDAO;
+	private final NguoiDungService nguoiDungService;
 	
 	public DangNhapController() {
-		this.nguoiDungDAO  = new NguoiDungDAO();
+		this.nguoiDungService  = new NguoiDungImlp();
 	}
 	
     @Override
@@ -36,8 +38,10 @@ public class DangNhapController extends HttpServlet {
         NguoiDung nguoiDung = new NguoiDung();
         nguoiDung.setUsername(taiKhoan);
         nguoiDung.setPassword(matKhau);
+        nguoiDung = nguoiDungService.kiemTraDangNhap(nguoiDung);
+        req.setAttribute("nguoiDung", nguoiDung);
         
-        if (nguoiDungDAO.kiemTraDangNhap(nguoiDung) != null) {
+        if (nguoiDung != null) {
         	RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
         	rd.forward(req, resp);
         } else {

@@ -9,7 +9,7 @@ public class DAO {
         Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/data_ltw?autoReconnect=true&useSSL=false"
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/data_ltw"
             		, "root", "root");
             System.out.println("connect successfully!");
         } catch (Exception ex) {
