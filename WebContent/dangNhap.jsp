@@ -18,7 +18,7 @@
 </header>
 
 <nav>
-    <a href="#" class="chonVao">Trang chủ</a>
+    <a href="" class="chonVao">Trang chủ</a>
     <a href="theLoai.jsp">Bài viết</a>
     <a href="sign-in.html">Đăng nhập</a>
 </nav>

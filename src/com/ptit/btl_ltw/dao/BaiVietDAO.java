@@ -1,17 +1,14 @@
 package com.ptit.btl_ltw.dao;
 
-import com.ptit.btl_ltw.model.BaiViet;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
-public class BaiVietDAO {
+import com.ptit.btl_ltw.model.BaiViet;
 
-	private Connection con = new DAO().getConnection();
+public class BaiVietDAO extends DAO{
 
     public List<BaiViet> layTatCaBaiViet() {
         List<BaiViet> danhSachKetQua = new ArrayList<>();

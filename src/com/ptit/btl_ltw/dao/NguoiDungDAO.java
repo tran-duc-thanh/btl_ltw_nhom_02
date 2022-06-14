@@ -1,16 +1,13 @@
 package com.ptit.btl_ltw.dao;
 
-import com.ptit.btl_ltw.model.NguoiDung;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.sql.Connection;
 
-public class NguoiDungDAO {
+import com.ptit.btl_ltw.model.NguoiDung;
+
+public class NguoiDungDAO extends DAO{
 	
-	private Connection con = new DAO().getConnection();
-
     public NguoiDungDAO () {
     }
 
