@@ -50,14 +50,17 @@ public class DangNhapController extends HttpServlet {
         nguoiDung.setPassword(matKhau);
         nguoiDung = nguoiDungService.kiemTraDangNhap(nguoiDung);
         req.setAttribute("nguoiDung", nguoiDung);
-        List<TheLoai> dsTheLoai = theLoaiService.layTatCaTheLoai();
-        req.setAttribute("dsTheLoai", dsTheLoai);
+        req.setAttribute("dsTheLoai", theLoaiService.layTatCaTheLoai());
         
-        if (nguoiDung != null) {
-        	List<BaiViet> dsBaiViet = baiVietService.layTatCaBaiViet();
-        	req.setAttribute("dsBaiViet", dsBaiViet);
-        	RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-        	rd.forward(req, resp);
+        if (nguoiDung != null && nguoiDung.getTrangThai() == 1) {
+        	req.setAttribute("dsBaiViet", baiVietService.layTatCaBaiViet());
+        	if (nguoiDung.getQuyen().equals("ADMIN")) {
+        		RequestDispatcher rd = req.getRequestDispatcher("dsBaiViet.jsp");
+	        	rd.forward(req, resp);
+        	} else {
+	        	RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+	        	rd.forward(req, resp);
+        	}
         } else {
         	RequestDispatcher rd = req.getRequestDispatcher("dangNhap.jsp");
         	rd.forward(req, resp);

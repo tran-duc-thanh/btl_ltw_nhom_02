@@ -38,12 +38,12 @@
             <h3>Vui lòng nhập đầy đủ thông tin để đăng ký.</h3>
         </section>
         <article>
-            <form action="" method="post" enctype="multipart/form-data">
-                <input type="text" placeholder="Họ tên" required autofocus><br>
+            <form action="dangKy" method="post">
+                <input type="text" name="hoTen" placeholder="Họ tên" required autofocus><br>
                 <br>
-                <input type="text" placeholder="Tên tài khoản" required><br>
+                <input type="text" name="taiKhoan" placeholder="Tên tài khoản" required><br>
                 <br>
-                <input type="password" placeholder="Mật khẩu" required><br>
+                <input type="password" name="matKhau" placeholder="Mật khẩu" required><br>
                 <br>
                 <button type="submit">Đăng ký</button>
                 <input type="reset" value="Làm mới">

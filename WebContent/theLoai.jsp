@@ -26,6 +26,9 @@
 		<% 
 			if (nguoiDung != null) {
 				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
+				if (nguoiDung.getQuyen().equals("ADMIN")) {
+					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
+				}
 			} else {
 				out.print("<a href='' class='chonVao'>Trang chủ</a>");
 			}

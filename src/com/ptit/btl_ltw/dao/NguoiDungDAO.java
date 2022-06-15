@@ -27,6 +27,8 @@ public class NguoiDungDAO extends DAO {
                 nguoiDung.setTen(rs.getString("ten"));
                 nguoiDung.setUsername(rs.getString("username"));
                 nguoiDung.setPassword(rs.getString("password"));
+                nguoiDung.setQuyen(rs.getString("quyen"));
+                nguoiDung.setTrangThai(rs.getInt("trangThai"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -48,6 +50,8 @@ public class NguoiDungDAO extends DAO {
                 nguoiDung.setTen(rs.getString("ten"));
                 nguoiDung.setUsername(rs.getString("username"));
                 nguoiDung.setPassword(rs.getString("password"));
+                nguoiDung.setQuyen(rs.getString("quyen"));
+                nguoiDung.setTrangThai(rs.getInt("trangThai"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -59,15 +63,17 @@ public class NguoiDungDAO extends DAO {
         StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO `data_ltw`.`nguoidung` ");
         sql.append("(`ten`, `username`, `password`, `quyen`, `trangThai`, `nguoiTao`, `ngayTao`) ");
-        sql.append("VALUES (?, ?, ?, 'USER', '1', ?, ?)");
+        sql.append("VALUES (?, ?, ?, ?, ?, ?, ?)");
 
         try {
             PreparedStatement ps = con.prepareStatement(sql.toString());
             ps.setString(1, u.getTen());
             ps.setString(2, u.getUsername());
             ps.setString(3, u.getPassword());
-            ps.setString(4, u.getUsername());
-            ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+            ps.setString(4, "USER");
+            ps.setInt(5, 1);
+            ps.setString(6, u.getUsername());
+            ps.setTimestamp(7, new Timestamp(System.currentTimeMillis()));
 
             ps.executeUpdate();
         } catch (Exception ex) {
