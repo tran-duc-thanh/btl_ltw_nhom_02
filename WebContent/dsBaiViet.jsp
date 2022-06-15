@@ -76,7 +76,7 @@
 							out.println("<form action='' method='post' class=''>");
 							out.println("<button type='submit' class=''>Sửa</button>");
 							out.println("</form>");
-							out.println("<form action='' method='post' class=''>");
+							out.println("<form action='xoaBaiViet' method='post' class=''>");
 							out.println("<button type='submit' class=''>Xóa</button>");
 							out.println("</form>");
 							out.println("</td>");
