@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="com.ptit.btl_ltw.model.BaiViet"%>
+<%@page import="com.ptit.btl_ltw.model.TheLoai"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ptit.btl_ltw.model.NguoiDung"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,37 +22,54 @@
 </header>
 
 <nav>
-    <a href="" class="chonVao">Trang chủ</a>
-    <a href="theLoai.jsp">Bài viết</a>
-    <a href="dangNhap.jsp">Đăng nhập</a>
+		<% NguoiDung nguoiDung = (NguoiDung) request.getAttribute("nguoiDung");%>
+		<% 
+			if (nguoiDung != null) {
+				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
+			} else {
+				out.print("<a href='' class='chonVao'>Trang chủ</a>");
+			}
+		%>
+		<%
+			List<TheLoai> dsTheLoai = (List<TheLoai>) request.getAttribute("dsTheLoai");
+			if (nguoiDung != null) {
+				for (int i = 0; i < dsTheLoai.size(); i++) {
+					out.print("<a href='theLoai?id=" + dsTheLoai.get(i).getId() + "&u=" + nguoiDung.getUsername() + "'>"+ dsTheLoai.get(i).getTen() +"</a>");
+				}
+			} else {
+				for (int i = 0; i < dsTheLoai.size(); i++) {
+					out.print("<a href='theLoai?id=" + dsTheLoai.get(i).getId() + "'>"+ dsTheLoai.get(i).getTen() +"</a>");
+				}
+			}
+		%>
+		
+		<a href="dangNhap">
+			<%
+			if (nguoiDung != null) {
+				out.print(nguoiDung.getTen());
+			} else {
+				out.print("Đăng Nhập");
+			}
+			%>
+		</a>
 </nav>
 
 <div class="thanTrang">
     <div class="noiDung">
-        <section>
-            <a href="chiTiet.jsp"><h2>'Double Mutant' Coronavirus Variant Detected in San Francisco</h2></a>
-            <br>
-            <h3>The variant, which is driving a spike in India but had not been seen in the U.S., is referred to as a
-                ‘double mutant’ because it carries two mutations that help the virus attach to cells.</h3>
-        </section>
-        <section>
-            <a href="chiTiet.jsp"><h2>'Double Mutant' Coronavirus Variant Detected in San Francisco</h2></a>
-            <br>
-            <h3>The variant, which is driving a spike in India but had not been seen in the U.S., is referred to as a
-                ‘double mutant’ because it carries two mutations that help the virus attach to cells.</h3>
-        </section>
-        <section>
-            <a href="chiTiet.jsp"><h2>'Double Mutant' Coronavirus Variant Detected in San Francisco</h2></a>
-            <br>
-            <h3>The variant, which is driving a spike in India but had not been seen in the U.S., is referred to as a
-                ‘double mutant’ because it carries two mutations that help the virus attach to cells.</h3>
-        </section>
-        <section>
-            <a href="chiTiet.jsp"><h2>'Double Mutant' Coronavirus Variant Detected in San Francisco</h2></a>
-            <br>
-            <h3>The variant, which is driving a spike in India but had not been seen in the U.S., is referred to as a
-                ‘double mutant’ because it carries two mutations that help the virus attach to cells.</h3>
-        </section>
+        <%
+			List<BaiViet> dsBaiViet = (List<BaiViet>) request.getAttribute("dsBaiViet");
+        	if (nguoiDung != null) {
+				for (int i = 0; i < dsBaiViet.size(); i++) {
+					out.print("<section><a href='chiTiet?id=" + dsBaiViet.get(i).getId() + "&u=" + nguoiDung.getUsername() + "'><h2>" + dsBaiViet.get(i).getTieuDe()
+					+ "</h2></a><br><h3>" + dsBaiViet.get(i).getTomTat() + "</h3></section>");
+				}
+        	} else {
+        		for (int i = 0; i < dsBaiViet.size(); i++) {
+					out.print("<section><a href='chiTiet?id=" + dsBaiViet.get(i).getId() + "'><h2>" + dsBaiViet.get(i).getTieuDe()
+					+ "</h2></a><br><h3>" + dsBaiViet.get(i).getTomTat() + "</h3></section>");
+				}
+        	}
+		%>
     </div>
 </div>
 

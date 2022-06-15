@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.ptit.btl_ltw.model.BaiViet;
 
-public class BaiVietDAO extends DAO{
+public class BaiVietDAO extends DAO {
 
     public List<BaiViet> layTatCaBaiViet() {
         List<BaiViet> danhSachKetQua = new ArrayList<>();

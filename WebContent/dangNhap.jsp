@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="com.ptit.btl_ltw.model.TheLoai"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +21,12 @@
 
 <nav>
     <a href="" class="chonVao">Trang chủ</a>
-    <a href="theLoai.jsp">Bài viết</a>
-    <a href="sign-in.html">Đăng nhập</a>
+	<%
+		List<TheLoai> dsTheLoai = (List<TheLoai>) request.getAttribute("dsTheLoai");
+		for (int i = 0; i < dsTheLoai.size(); i++) {
+			out.print("<a href='theLoai?id=" + dsTheLoai.get(i).getId() + "'>"+ dsTheLoai.get(i).getTen() +"</a>");
+		}
+	%>
 </nav>
 
 <div class="thanTrang thanTrang-hinhNen">
@@ -39,7 +45,7 @@
                 <button type="submit">Đăng nhập</button>
                 <br/>
                 <br/>
-                <p>Bạn chưa có tài khoản? <a href="dangKy.jsp" style="color: #d36d00;">Đăng ký ngay!</a></p>
+                <p>Bạn chưa có tài khoản? <a href="dangKy" style="color: #d36d00;">Đăng ký ngay!</a></p>
             </form>
         </article>
     </div>

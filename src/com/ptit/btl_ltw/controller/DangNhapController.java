@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ptit.btl_ltw.model.BaiViet;
 import com.ptit.btl_ltw.model.NguoiDung;
+import com.ptit.btl_ltw.model.TheLoai;
 import com.ptit.btl_ltw.service.BaiVietService;
 import com.ptit.btl_ltw.service.NguoiDungService;
+import com.ptit.btl_ltw.service.TheLoaiService;
 import com.ptit.btl_ltw.service.imlp.BaiVietImlp;
 import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
+import com.ptit.btl_ltw.service.imlp.TheLoaiImlp;
 
 @WebServlet("/dangNhap")
 public class DangNhapController extends HttpServlet {
@@ -27,10 +30,12 @@ public class DangNhapController extends HttpServlet {
 	
 	private final NguoiDungService nguoiDungService;
 	private final BaiVietService baiVietService;
+	private final TheLoaiService theLoaiService;
 	
 	public DangNhapController() {
 		this.nguoiDungService  = new NguoiDungImlp();
 		this.baiVietService = new BaiVietImlp();
+		this.theLoaiService = new TheLoaiImlp();
 	}
 	
     @Override
@@ -45,10 +50,11 @@ public class DangNhapController extends HttpServlet {
         nguoiDung.setPassword(matKhau);
         nguoiDung = nguoiDungService.kiemTraDangNhap(nguoiDung);
         req.setAttribute("nguoiDung", nguoiDung);
-        List<BaiViet> dsBaiViet = baiVietService.layTatCaBaiViet();
-//        System.out.print(dsBaiViet.get(0).getTieuDe());
+        List<TheLoai> dsTheLoai = theLoaiService.layTatCaTheLoai();
+        req.setAttribute("dsTheLoai", dsTheLoai);
         
         if (nguoiDung != null) {
+        	List<BaiViet> dsBaiViet = baiVietService.layTatCaBaiViet();
         	req.setAttribute("dsBaiViet", dsBaiViet);
         	RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
         	rd.forward(req, resp);
@@ -57,5 +63,17 @@ public class DangNhapController extends HttpServlet {
         	rd.forward(req, resp);
         }
         
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
+    	resp.setContentType("text/html");
+		
+		List<TheLoai> dsTheLoai = theLoaiService.layTatCaTheLoai();
+		req.setAttribute("dsTheLoai", dsTheLoai);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("dangNhap.jsp");
+    	rd.forward(req, resp);
     }
 }

@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 import com.ptit.btl_ltw.model.NguoiDung;
 
-public class NguoiDungDAO extends DAO{
+public class NguoiDungDAO extends DAO {
 	
     public NguoiDungDAO () {
     }

@@ -20,18 +20,19 @@ import com.ptit.btl_ltw.service.imlp.BaiVietImlp;
 import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
 import com.ptit.btl_ltw.service.imlp.TheLoaiImlp;
 
-@WebServlet(urlPatterns = {"", "/trangChu"})
-public class TrangChuController extends HttpServlet {
+@WebServlet("/theLoai")
+public class TheLoaiController extends HttpServlet{
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	private final NguoiDungService nguoiDungService;
 	private final BaiVietService baiVietService;
 	private final TheLoaiService theLoaiService;
-	private final NguoiDungService nguoiDungService;
-
-	public TrangChuController() {
+	
+	public TheLoaiController() {
 		this.nguoiDungService  = new NguoiDungImlp();
 		this.baiVietService = new BaiVietImlp();
 		this.theLoaiService = new TheLoaiImlp();
@@ -41,17 +42,18 @@ public class TrangChuController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		resp.setContentType("text/html");
+		
+		int id = Integer.parseInt(req.getParameter("id"));
 		String un = req.getParameter("u");
 		if (un != null && un != "") {
-			NguoiDung nguoiDung = nguoiDungService.layNguoiDungTheoUsername(un);
-			req.setAttribute("nguoiDung", nguoiDung);
+			req.setAttribute("nguoiDung", nguoiDungService.layNguoiDungTheoUsername(un));
 		}
-		List<BaiViet> dsBaiViet = baiVietService.layTatCaBaiViet();
+		List<BaiViet> dsBaiViet = baiVietService.layTatCaBaiVietCungTheLoai(id);
 		List<TheLoai> dsTheLoai = theLoaiService.layTatCaTheLoai();
 		req.setAttribute("dsBaiViet", dsBaiViet);
 		req.setAttribute("dsTheLoai", dsTheLoai);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("theLoai.jsp");
     	rd.forward(req, resp);
 	}
 }
