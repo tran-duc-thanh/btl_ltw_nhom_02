@@ -54,29 +54,42 @@
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<form action="luuBaiViet?u=<%out.print(nguoiDung.getUsername()); %>" method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
+			<% BaiViet baiViet = (BaiViet) request.getAttribute("baiViet"); %>
+			<form action="luuBaiViet?u=<%out.print(nguoiDung.getUsername()); if (baiViet != null){out.print("&id="+baiViet.getId());}%>"
+				method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
 	            <div class="themSuaBaiViet">
 	                <label>Thể loại</label>
 	                <select name="theLoai">
-	                    <option value="">Chọn thể loại</option>
+	                    
 	                    <%
-		                    for (int i = 0; i < dsTheLoai.size(); i++) {
-		                    	out.println("<option value='"+ dsTheLoai.get(i).getId() +"'>"+ dsTheLoai.get(i).getTen() +"</option>");
-		    				}
+	                    	if (baiViet == null) {
+		                    	out.println("<option value=''>Chọn thể loại</option>");
+			                    for (int i = 0; i < dsTheLoai.size(); i++) {
+			                    	out.println("<option value='"+ dsTheLoai.get(i).getId() +"'>"+ dsTheLoai.get(i).getTen() +"</option>");
+			    				}
+	                    	} else {
+	                    		for (int i = 0; i < dsTheLoai.size(); i++) {
+	                    			if (baiViet.getTheLoaiId() == dsTheLoai.get(i).getId()) {
+	                    				out.println("<option selected='selected' value='"+ dsTheLoai.get(i).getId() +"'>"+ dsTheLoai.get(i).getTen() +"</option>");
+	                    			} else {
+			                    		out.println("<option value='"+ dsTheLoai.get(i).getId() +"'>"+ dsTheLoai.get(i).getTen() +"</option>");
+	                    			}
+			    				}
+	                    	}
 	                    %>
 	                </select>
 	            </div>
 	            <div class="themSuaBaiViet">
 	                <label>Tiêu đề</label>
-	                <input type="text" class="khoi1" name="tieuDe" required>
+	                <input type="text" value="<%if (baiViet != null) {out.print(baiViet.getTieuDe());} %>" class="khoi1" name="tieuDe" required>
 	            </div>
 	            <div class="themSuaBaiViet">
 	                <label>Tóm tắt</label>
-	                <textarea class="khoi1" name="tomTat" rows="3" required></textarea>
+	                <textarea class="khoi1" value="" name="tomTat" rows="3" required><%if (baiViet != null) {out.print(baiViet.getTomTat());} %></textarea>
 	            </div>
 	            <div class="themSuaBaiViet">
 	                <label>Nội dung</label>
-	                <textarea class="khoi1" name="noiDung" rows="20" required></textarea>
+	                <textarea class="khoi1" name="noiDung" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
 	                <script>
 	                    CKEDITOR.replace('noiDung')
 	                </script>

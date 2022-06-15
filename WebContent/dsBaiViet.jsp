@@ -73,10 +73,10 @@
 							out.println("<th scope='row'>" + (i+1) + "</th>");
 							out.println("<td>" + dsBaiViet.get(i).getTieuDe() + "</td>");
 							out.println("<td>");
-							out.println("<form action='' method='post' class=''>");
+							out.println("<form action='suaBaiViet?id="+ dsBaiViet.get(i).getId() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
 							out.println("<button type='submit' class=''>Sửa</button>");
 							out.println("</form>");
-							out.println("<form action='xoaBaiViet' method='post' class=''>");
+							out.println("<form action='xoaBaiViet?id="+ dsBaiViet.get(i).getId() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
 							out.println("<button type='submit' class=''>Xóa</button>");
 							out.println("</form>");
 							out.println("</td>");

@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ptit.btl_ltw.model.BaiViet;
-import com.ptit.btl_ltw.model.NguoiDung;
 import com.ptit.btl_ltw.service.BaiVietService;
 import com.ptit.btl_ltw.service.NguoiDungService;
 import com.ptit.btl_ltw.service.TheLoaiService;
@@ -18,8 +16,8 @@ import com.ptit.btl_ltw.service.imlp.BaiVietImlp;
 import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
 import com.ptit.btl_ltw.service.imlp.TheLoaiImlp;
 
-@WebServlet("/luuBaiViet")
-public class LuuBaiVietController extends HttpServlet{
+@WebServlet("/suaBaiViet")
+public class suaBaiVietController extends HttpServlet{
 
 	/**
 	 * 
@@ -30,7 +28,7 @@ public class LuuBaiVietController extends HttpServlet{
 	private final BaiVietService baiVietService;
 	private final TheLoaiService theLoaiService;
 	
-	public LuuBaiVietController() {
+	public suaBaiVietController() {
 		this.nguoiDungService  = new NguoiDungImlp();
 		this.baiVietService = new BaiVietImlp();
 		this.theLoaiService = new TheLoaiImlp();
@@ -41,32 +39,15 @@ public class LuuBaiVietController extends HttpServlet{
 		
 		resp.setContentType("text/html");
 		
-		int theLoai_id = Integer.parseInt(req.getParameter("theLoai"));
-		String tieuDe = req.getParameter("tieuDe");
-		String tomTat = req.getParameter("tomTat");
-		String noiDung = req.getParameter("noiDung");
 		String un = req.getParameter("u");
-		NguoiDung nguoiDung = nguoiDungService.layNguoiDungTheoUsername(un);
+		int id = Integer.parseInt(req.getParameter("id"));
 		
-		BaiViet baiViet = new BaiViet();
-		baiViet.setTieuDe(tieuDe);
-		baiViet.setTomTat(tomTat);
-		baiViet.setNoiDung(noiDung);
-		baiViet.setTheLoaiId(theLoai_id);
-		baiViet.setNguoiTao(nguoiDung.getUsername());
-		
-		if (req.getParameter("id") == null) {
-			baiVietService.themBaiViet(baiViet);
-		} else {
-			int id = Integer.parseInt(req.getParameter("id"));
-			baiVietService.suaBaiViet(baiViet, id);
-		}
-		
-		req.setAttribute("nguoiDung", nguoiDung);
-		req.setAttribute("dsBaiViet", baiVietService.layTatCaBaiViet());
 		req.setAttribute("dsTheLoai", theLoaiService.layTatCaTheLoai());
+		req.setAttribute("nguoiDung", nguoiDungService.layNguoiDungTheoUsername(un));
+		req.setAttribute("baiViet", baiVietService.layMotBaiViet(id));
 		
-		RequestDispatcher rd = req.getRequestDispatcher("dsBaiViet.jsp");
-		rd.forward(req, resp);
+		RequestDispatcher rd = req.getRequestDispatcher("themSuaBaiViet.jsp");
+    	rd.forward(req, resp);
 	}
+
 }
