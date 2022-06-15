@@ -17,36 +17,72 @@
 	</header>
 
 	<nav>
+		<% NguoiDung nguoiDung = (NguoiDung) request.getAttribute("nguoiDung");%>
+		<% 
+			if (nguoiDung != null) {
+				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
+				if (nguoiDung.getQuyen().equals("ADMIN")) {
+					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
+				}
+			} else {
+				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
+			}
+		%>
+		<%
+			List<TheLoai> dsTheLoai = (List<TheLoai>) request.getAttribute("dsTheLoai");
+			if (nguoiDung != null) {
+				for (int i = 0; i < dsTheLoai.size(); i++) {
+					out.print("<a href='theLoai?id=" + dsTheLoai.get(i).getId() + "&u=" + nguoiDung.getUsername() + "'>"+ dsTheLoai.get(i).getTen() +"</a>");
+				}
+			} else {
+				for (int i = 0; i < dsTheLoai.size(); i++) {
+					out.print("<a href='theLoai?id=" + dsTheLoai.get(i).getId() + "'>"+ dsTheLoai.get(i).getTen() +"</a>");
+				}
+			}
+		%>
 		
+		<a href="dangNhap">
+			<%
+			if (nguoiDung != null) {
+				out.print(nguoiDung.getTen());
+			} else {
+				out.print("Đăng Nhập");
+			}
+			%>
+		</a>
 	</nav>
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<form action="" method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
+			<form action="luuBaiViet?u=<%out.print(nguoiDung.getUsername()); %>" method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
 	            <div class="themSuaBaiViet">
 	                <label>Thể loại</label>
 	                <select name="theLoai">
 	                    <option value="">Chọn thể loại</option>
-	                    <option value=""></option>
+	                    <%
+		                    for (int i = 0; i < dsTheLoai.size(); i++) {
+		                    	out.println("<option value='"+ dsTheLoai.get(i).getId() +"'>"+ dsTheLoai.get(i).getTen() +"</option>");
+		    				}
+	                    %>
 	                </select>
 	            </div>
 	            <div class="themSuaBaiViet">
 	                <label>Tiêu đề</label>
-	                <input type="text" class="khoi1" name="title" required>
+	                <input type="text" class="khoi1" name="tieuDe" required>
 	            </div>
 	            <div class="themSuaBaiViet">
 	                <label>Tóm tắt</label>
-	                <textarea class="khoi1" name="shortDescription" rows="3" required></textarea>
+	                <textarea class="khoi1" name="tomTat" rows="3" required></textarea>
 	            </div>
 	            <div class="themSuaBaiViet">
 	                <label>Nội dung</label>
-	                <textarea class="khoi1" name="content" rows="20" required></textarea>
+	                <textarea class="khoi1" name="noiDung" rows="20" required></textarea>
 	                <script>
-	                    CKEDITOR.replace('content')
+	                    CKEDITOR.replace('noiDung')
 	                </script>
 	            </div>
 	            <div class="themSuaBaiViet">
-	                <button type="submit" class="btn btn-primary">ADD</button>
+	                <button type="submit" class="">Lưu</button>
 	            </div>
         	</form>
 		</div>

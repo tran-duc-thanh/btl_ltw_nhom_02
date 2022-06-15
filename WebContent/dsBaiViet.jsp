@@ -53,7 +53,7 @@
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<form action="" method="post">
+			<form action="themBaiViet?u=<%out.print(nguoiDung.getUsername()); %>" method="post">
             	<button type="submit">Thêm bài viết</button>
         	</form>
 

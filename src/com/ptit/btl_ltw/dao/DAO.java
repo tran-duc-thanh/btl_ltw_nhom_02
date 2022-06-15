@@ -13,7 +13,7 @@ public class DAO {
 
 			try {
 				Class.forName(dbClass);
-				con = DriverManager.getConnection(dbUrl, "root", "root");
+				con = DriverManager.getConnection(dbUrl, "root", "thanhthanh1996");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
