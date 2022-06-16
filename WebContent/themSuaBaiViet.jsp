@@ -14,7 +14,7 @@
 </head>
 <body>
 	<header>
-		<h1>Trang chủ</h1>
+		<h1>QL Bài Viết</h1>
 	</header>
 
 	<nav>
@@ -25,6 +25,7 @@
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
 					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
+					out.print("<a href='dsTaiKhoan?u=" + nguoiDung.getUsername() + "'>QL Tài Khoản</a>");
 				}
 			} else {
 				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
