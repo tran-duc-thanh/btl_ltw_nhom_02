@@ -40,6 +40,7 @@ public class LuuBaiVietController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		resp.setContentType("text/html");
+		req.setCharacterEncoding("UTF-8");
 		
 		int theLoai_id = Integer.parseInt(req.getParameter("theLoai"));
 		String tieuDe = req.getParameter("tieuDe");
