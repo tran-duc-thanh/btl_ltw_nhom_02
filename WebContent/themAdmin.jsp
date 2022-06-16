@@ -1,19 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page import="com.ptit.btl_ltw.model.TheLoai"%>
 <%@page import="com.ptit.btl_ltw.model.BaiViet"%>
 <%@page import="java.util.List"%>
 <%@page import="com.ptit.btl_ltw.model.NguoiDung"%>
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./css/css.css">
-	<title>Tin tức | QL Tài Khoản</title>
+	<script src="./ckeditor/ckeditor.js" type="text/javascript"></script>
+	<title>Tin tức | Thêm Admin</title>
 </head>
 <body>
 	<header>
-		<h1>QL Tài Khoản</h1>
+		<h1>Thêm Admin</h1>
 	</header>
 
 	<nav>
@@ -56,45 +58,28 @@
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<% List<NguoiDung> dsNguoiDung = (List<NguoiDung>) request.getAttribute("dsNguoiDung"); %>
-			<form action="themTKAdmin?u=<%out.print(nguoiDung.getUsername());%>" method="post">
-            	<button type="submit">Thêm TK Admin</button>
+			<form action="luuAdmin?u=<%out.print(nguoiDung.getUsername());%>"
+				method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
+	            
+	            <div class="">
+	                <label>Họ Tên</label>
+	                <input type="text" class="" name="hoten" required>
+	            </div>
+	            
+	            <div class="">
+	                <label>Tên Tài Khoản</label>
+	                <input type="text" class="" name="taikhoan" required>
+	            </div>
+	            
+	            <div class="">
+	                <label>Mật Khẩu</label>
+	                <input type="password" class="" name="matkhau" required>
+	            </div>
+	            
+	            <div class="">
+	                <button type="submit" class="">Lưu</button>
+	            </div>
         	</form>
-
-			<table class="table table-bordered">
-            	<thead>
-            		<tr>
-		                <th scope="col">STT</th>
-		                <th scope="col">Tên Tài khoản</th>
-		                <th scope="col">Tùy chỉnh</th>
-            		</tr>
-            	</thead>
-            	<tbody>
-					<%
-						for (int i = 0; i < dsNguoiDung.size(); i++) {
-							out.println("<tr>");
-							out.println("<th scope='row'>" + (i+1) + "</th>");
-							out.println("<td>" + dsNguoiDung.get(i).getUsername() + "</td>");
-							out.println("<td>");
-							out.println("<form action='khoaMoTaiKhoan?un="+ dsNguoiDung.get(i).getUsername() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
-							
-							if (dsNguoiDung.get(i).getQuyen().equals("ADMIN")) {
-								out.println("<button type='button' class=''>-----</button>");
-							} else {
-								if (dsNguoiDung.get(i).getTrangThai() == 1) {
-									out.println("<button type='submit' class=''>Khóa</button>");
-								} else {
-									out.println("<button type='submit' class=''>Mở</button>");
-								}
-							}
-							
-							out.println("</form>");
-							out.println("</td>");
-							out.println("</tr>");
-						}
-					%>
-            	</tbody>
-        </table>
 		</div>
 	</div>
 
