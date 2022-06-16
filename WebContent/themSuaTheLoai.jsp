@@ -9,7 +9,8 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./css/css.css">
-	<title>Tin tức | Trang chủ</title>
+	<script src="./ckeditor/ckeditor.js" type="text/javascript"></script>
+	<title>Tin tức | QL Thể Loại</title>
 </head>
 <body>
 	<header>
@@ -26,7 +27,7 @@
 					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 				}
 			} else {
-				out.println("<a href='trangChu' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
 			}
 		%>
 		<%
@@ -55,27 +56,24 @@
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<section>
-				<h2>Chào mừng bạn đến với trang tin tức của chúng tôi</h2>
-				<br>
-				<h3>Chúng tôi rất vui khi được chia sẽ nhưng tin mới nhất cho
-					bạn!</h3>
-				<p>Hãy chọn một mục để xem.</p>
-			</section>
-			<%
-				List<BaiViet> dsBaiViet = (List<BaiViet>) request.getAttribute("dsBaiViet");
-				if (nguoiDung != null) {
-					for (int i = 0; i < dsBaiViet.size(); i++) {
-						out.print("<section><a href='chiTiet?id=" + dsBaiViet.get(i).getId()  + "&u=" + nguoiDung.getUsername() + "'><h2>" + dsBaiViet.get(i).getTieuDe()
-						+ "</h2></a><br><h3>" + dsBaiViet.get(i).getTomTat() + "</h3></section>");
-					}
-				} else {
-					for (int i = 0; i < dsBaiViet.size(); i++) {
-						out.print("<section><a href='chiTiet?id=" + dsBaiViet.get(i).getId() + "'><h2>" + dsBaiViet.get(i).getTieuDe()
-						+ "</h2></a><br><h3>" + dsBaiViet.get(i).getTomTat() + "</h3></section>");
-					}
-				}
-			%>
+			<% TheLoai theLoai = (TheLoai) request.getAttribute("theLoai"); %>
+			<form action="luuTheLoai?u=<%out.print(nguoiDung.getUsername()); if (theLoai != null){out.print("&id="+theLoai.getId());}%>"
+				method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
+	            
+	            <div class="">
+	                <label>Tên thể loại</label>
+	                <input type="text" value="<%if (theLoai != null) {out.print(theLoai.getTen());} %>" class="" name="tenTheLoai" required>
+	            </div>
+	            
+	            <div class="">
+	                <label>Mã thể loại</label>
+	                <input type="text" value="<%if (theLoai != null) {out.print(theLoai.getMa());} %>" class="" name="maTheLoai" required>
+	            </div>
+	            
+	            <div class="">
+	                <button type="submit" class="">Lưu</button>
+	            </div>
+        	</form>
 		</div>
 	</div>
 

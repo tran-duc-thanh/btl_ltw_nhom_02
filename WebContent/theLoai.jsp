@@ -13,8 +13,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8">
     <link rel="stylesheet" href="./css/css.css">
-    <title>Tin tức | Trang chủ</title>
+    <title>Tin tức | Thể Loại</title>
 </head>
 <body>
 <header>
@@ -28,6 +29,7 @@
 				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
+					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 				}
 			} else {
 				out.print("<a href='' class='chonVao'>Trang chủ</a>");

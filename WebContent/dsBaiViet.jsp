@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="./css/css.css">
-<title>Tin tức | Trang chủ</title>
+<title>Tin tức | Ql Bài Viết</title>
 </head>
 <body>
 	<header>
@@ -22,6 +22,7 @@
 				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
+					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 				}
 			} else {
 				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");

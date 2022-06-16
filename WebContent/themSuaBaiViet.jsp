@@ -7,9 +7,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="./css/css.css">
-<script src="./ckeditor/ckeditor.js" type="text/javascript"></script>
-<title>Tin tức | Trang chủ</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./css/css.css">
+	<script src="./ckeditor/ckeditor.js" type="text/javascript"></script>
+	<title>Tin tức | QL Bài Viết</title>
 </head>
 <body>
 	<header>
@@ -23,6 +24,7 @@
 				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
+					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 				}
 			} else {
 				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
@@ -57,7 +59,7 @@
 			<% BaiViet baiViet = (BaiViet) request.getAttribute("baiViet"); %>
 			<form action="luuBaiViet?u=<%out.print(nguoiDung.getUsername()); if (baiViet != null){out.print("&id="+baiViet.getId());}%>"
 				method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
-	            <div class="themSuaBaiViet">
+	            <div class="">
 	                <label>Thể loại</label>
 	                <select name="theLoai">
 	                    
@@ -79,22 +81,22 @@
 	                    %>
 	                </select>
 	            </div>
-	            <div class="themSuaBaiViet">
+	            <div class="">
 	                <label>Tiêu đề</label>
-	                <input type="text" value="<%if (baiViet != null) {out.print(baiViet.getTieuDe());} %>" class="khoi1" name="tieuDe" required>
+	                <input type="text" value="<%if (baiViet != null) {out.print(baiViet.getTieuDe());} %>" class="" name="tieuDe" required>
 	            </div>
-	            <div class="themSuaBaiViet">
+	            <div class="">
 	                <label>Tóm tắt</label>
-	                <textarea class="khoi1" value="" name="tomTat" rows="3" required><%if (baiViet != null) {out.print(baiViet.getTomTat());} %></textarea>
+	                <textarea class="" value="" name="tomTat" rows="3" required><%if (baiViet != null) {out.print(baiViet.getTomTat());} %></textarea>
 	            </div>
-	            <div class="themSuaBaiViet">
+	            <div class="">
 	                <label>Nội dung</label>
-	                <textarea class="khoi1" name="noiDung" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
+	                <textarea class="" name="noiDung" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
 	                <script>
 	                    CKEDITOR.replace('noiDung')
 	                </script>
 	            </div>
-	            <div class="themSuaBaiViet">
+	            <div class="">
 	                <button type="submit" class="">Lưu</button>
 	            </div>
         	</form>

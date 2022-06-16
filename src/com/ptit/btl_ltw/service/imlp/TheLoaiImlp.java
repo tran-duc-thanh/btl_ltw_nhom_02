@@ -15,4 +15,19 @@ public class TheLoaiImlp implements TheLoaiService {
 		return theLoaiDAO.layTatCaTheLoai();
 	}
 
+	@Override
+	public TheLoai layMotTheLoai(int id) {
+		return theLoaiDAO.layMotTheLoai(id);
+	}
+
+	@Override
+	public void themTheLoai(TheLoai theLoai) {
+		theLoaiDAO.themTheLoai(theLoai);
+	}
+
+	@Override
+	public void suaTheLoai(TheLoai theLoai, int id) {
+		theLoaiDAO.suaTheLoai(theLoai, id);
+	}
+
 }

@@ -112,7 +112,7 @@ public class BaiVietDAO extends DAO {
         StringBuilder sql = new StringBuilder();
         sql.append("UPDATE `data_ltw`.`baiviet` ");
         sql.append("SET `tieuDe` = ?, `tomTat` = ?, `noiDung` = ?, `theLoai_id` = ?, ");
-        sql.append("`nguoiTao` = ?, `ngayTao` = ?, `nguoiSua` = ?, `ngaySua` = ? ");
+        sql.append("`nguoiSua` = ?, `ngaySua` = ? ");
         sql.append("WHERE (`id` = ?)");
 
         try {
@@ -122,11 +122,9 @@ public class BaiVietDAO extends DAO {
             ps.setString(2, baiViet.getTomTat());
             ps.setString(3, baiViet.getNoiDung());
             ps.setInt(4, baiViet.getTheLoaiId());
-            ps.setString(5, baiViet.getNguoiTao());
-            ps.setTimestamp(6, baiViet.getNgayTao());
-            ps.setString(7, baiViet.getNguoiSua());
-            ps.setTimestamp(8, new Timestamp(System.currentTimeMillis()));
-            ps.setInt(9, id);
+            ps.setString(5, baiViet.getNguoiSua());
+            ps.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
+            ps.setInt(7, id);
 
             ps.executeUpdate();
 

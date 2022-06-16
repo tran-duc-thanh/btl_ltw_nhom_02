@@ -11,6 +11,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta charset="utf-8">
     <link rel="stylesheet" href="./css/css.css">
     <title>Tin tức | Đăng nhập</title>
 </head>

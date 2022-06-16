@@ -1,4 +1,4 @@
-package com.ptit.btl_ltw.controller.baiViet;
+package com.ptit.btl_ltw.controller.theLoai;
 
 import java.io.IOException;
 
@@ -14,18 +14,18 @@ import com.ptit.btl_ltw.service.TheLoaiService;
 import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
 import com.ptit.btl_ltw.service.imlp.TheLoaiImlp;
 
-@WebServlet("/themBaiViet")
-public class ThemBaiVietController extends HttpServlet{
+@WebServlet("/themTheLoai")
+public class ThemTheLoaiController extends HttpServlet{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private final NguoiDungService nguoiDungService;
 	private final TheLoaiService theLoaiService;
 	
-	public ThemBaiVietController() {
+	public ThemTheLoaiController() {
 		this.nguoiDungService  = new NguoiDungImlp();
 		this.theLoaiService = new TheLoaiImlp();
 	}
@@ -40,7 +40,7 @@ public class ThemBaiVietController extends HttpServlet{
 		req.setAttribute("dsTheLoai", theLoaiService.layTatCaTheLoai());
 		req.setAttribute("nguoiDung", nguoiDungService.layNguoiDungTheoUsername(un));
 		
-		RequestDispatcher rd = req.getRequestDispatcher("themSuaBaiViet.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("themSuaTheLoai.jsp");
     	rd.forward(req, resp);
 	}
 }

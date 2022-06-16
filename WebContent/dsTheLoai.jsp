@@ -9,7 +9,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./css/css.css">
-	<title>Tin tức | Trang chủ</title>
+	<title>Tin tức | QL Thể Loại</title>
 </head>
 <body>
 	<header>
@@ -26,7 +26,7 @@
 					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 				}
 			} else {
-				out.println("<a href='trangChu' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
 			}
 		%>
 		<%
@@ -55,27 +55,36 @@
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<section>
-				<h2>Chào mừng bạn đến với trang tin tức của chúng tôi</h2>
-				<br>
-				<h3>Chúng tôi rất vui khi được chia sẽ nhưng tin mới nhất cho
-					bạn!</h3>
-				<p>Hãy chọn một mục để xem.</p>
-			</section>
-			<%
-				List<BaiViet> dsBaiViet = (List<BaiViet>) request.getAttribute("dsBaiViet");
-				if (nguoiDung != null) {
-					for (int i = 0; i < dsBaiViet.size(); i++) {
-						out.print("<section><a href='chiTiet?id=" + dsBaiViet.get(i).getId()  + "&u=" + nguoiDung.getUsername() + "'><h2>" + dsBaiViet.get(i).getTieuDe()
-						+ "</h2></a><br><h3>" + dsBaiViet.get(i).getTomTat() + "</h3></section>");
-					}
-				} else {
-					for (int i = 0; i < dsBaiViet.size(); i++) {
-						out.print("<section><a href='chiTiet?id=" + dsBaiViet.get(i).getId() + "'><h2>" + dsBaiViet.get(i).getTieuDe()
-						+ "</h2></a><br><h3>" + dsBaiViet.get(i).getTomTat() + "</h3></section>");
-					}
-				}
-			%>
+			<form action="themTheLoai?u=<%out.print(nguoiDung.getUsername()); %>" method="post">
+            	<button type="submit">Thêm thể loại</button>
+        	</form>
+
+			<table class="table table-bordered">
+            	<thead>
+            		<tr>
+		                <th scope="col">STT</th>
+		                <th scope="col">Tên thể loại</th>
+		                <th scope="col">Mã thể loại</th>
+		                <th scope="col">Tùy chỉnh</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+					<%
+						for (int i = 0; i < dsTheLoai.size(); i++) {
+							out.println("<tr>");
+							out.println("<th scope='row'>" + (i+1) + "</th>");
+							out.println("<td>" + dsTheLoai.get(i).getTen() + "</td>");
+							out.println("<td>" + dsTheLoai.get(i).getMa() + "</td>");
+							out.println("<td>");
+							out.println("<form action='suaTheLoai?id="+ dsTheLoai.get(i).getId() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
+							out.println("<button type='submit' class=''>Sửa</button>");
+							out.println("</form>");
+							out.println("</td>");
+							out.println("</tr>");
+						}
+					%>
+            	</tbody>
+        </table>
 		</div>
 	</div>
 

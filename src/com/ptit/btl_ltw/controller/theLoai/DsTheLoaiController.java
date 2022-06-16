@@ -1,4 +1,4 @@
-package com.ptit.btl_ltw.controller.baiViet;
+package com.ptit.btl_ltw.controller.theLoai;
 
 import java.io.IOException;
 
@@ -14,33 +14,33 @@ import com.ptit.btl_ltw.service.TheLoaiService;
 import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
 import com.ptit.btl_ltw.service.imlp.TheLoaiImlp;
 
-@WebServlet("/themBaiViet")
-public class ThemBaiVietController extends HttpServlet{
+@WebServlet("/dsTheLoai")
+public class DsTheLoaiController extends HttpServlet{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private final NguoiDungService nguoiDungService;
 	private final TheLoaiService theLoaiService;
 	
-	public ThemBaiVietController() {
+	public DsTheLoaiController() {
 		this.nguoiDungService  = new NguoiDungImlp();
 		this.theLoaiService = new TheLoaiImlp();
 	}
-
+	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
+    	resp.setContentType("text/html");
 		
-		resp.setContentType("text/html");
-		
-		String un = req.getParameter("u");
-		
+    	String un = req.getParameter("u");
+    	
+    	req.setAttribute("nguoiDung", nguoiDungService.layNguoiDungTheoUsername(un));
 		req.setAttribute("dsTheLoai", theLoaiService.layTatCaTheLoai());
-		req.setAttribute("nguoiDung", nguoiDungService.layNguoiDungTheoUsername(un));
 		
-		RequestDispatcher rd = req.getRequestDispatcher("themSuaBaiViet.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("dsTheLoai.jsp");
     	rd.forward(req, resp);
-	}
+    }
 }

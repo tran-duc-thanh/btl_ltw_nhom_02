@@ -1,4 +1,4 @@
-package com.ptit.btl_ltw.controller.baiViet;
+package com.ptit.btl_ltw.controller.theLoai;
 
 import java.io.IOException;
 
@@ -9,30 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ptit.btl_ltw.model.BaiViet;
 import com.ptit.btl_ltw.model.NguoiDung;
-import com.ptit.btl_ltw.service.BaiVietService;
+import com.ptit.btl_ltw.model.TheLoai;
 import com.ptit.btl_ltw.service.NguoiDungService;
 import com.ptit.btl_ltw.service.TheLoaiService;
-import com.ptit.btl_ltw.service.imlp.BaiVietImlp;
 import com.ptit.btl_ltw.service.imlp.NguoiDungImlp;
 import com.ptit.btl_ltw.service.imlp.TheLoaiImlp;
 
-@WebServlet("/luuBaiViet")
-public class LuuBaiVietController extends HttpServlet{
+@WebServlet("/luuTheLoai")
+public class LuuTheLoaiController extends HttpServlet{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private final NguoiDungService nguoiDungService;
-	private final BaiVietService baiVietService;
 	private final TheLoaiService theLoaiService;
 	
-	public LuuBaiVietController() {
+	public LuuTheLoaiController() {
 		this.nguoiDungService  = new NguoiDungImlp();
-		this.baiVietService = new BaiVietImlp();
 		this.theLoaiService = new TheLoaiImlp();
 	}
 
@@ -41,33 +37,28 @@ public class LuuBaiVietController extends HttpServlet{
 		
 		resp.setContentType("text/html");
 		
-		int theLoai_id = Integer.parseInt(req.getParameter("theLoai"));
-		String tieuDe = req.getParameter("tieuDe");
-		String tomTat = req.getParameter("tomTat");
-		String noiDung = req.getParameter("noiDung");
+		String tenTheLoai = req.getParameter("tenTheLoai");
+		String maTheLoai = req.getParameter("maTheLoai");
 		String un = req.getParameter("u");
 		NguoiDung nguoiDung = nguoiDungService.layNguoiDungTheoUsername(un);
 		
-		BaiViet baiViet = new BaiViet();
-		baiViet.setTieuDe(tieuDe);
-		baiViet.setTomTat(tomTat);
-		baiViet.setNoiDung(noiDung);
-		baiViet.setTheLoaiId(theLoai_id);
+		TheLoai theLoai = new TheLoai();
+		theLoai.setTen(tenTheLoai);
+		theLoai.setMa(maTheLoai);
 		
 		if (req.getParameter("id") == null) {
-			baiViet.setNguoiTao(nguoiDung.getUsername());
-			baiVietService.themBaiViet(baiViet);
+			theLoai.setNguoiTao(nguoiDung.getUsername());
+			theLoaiService.themTheLoai(theLoai);
 		} else {
-			baiViet.setNguoiSua(nguoiDung.getUsername());
+			theLoai.setNguoiSua(nguoiDung.getUsername());
 			int id = Integer.parseInt(req.getParameter("id"));
-			baiVietService.suaBaiViet(baiViet, id);
+			theLoaiService.suaTheLoai(theLoai, id);
 		}
 		
 		req.setAttribute("nguoiDung", nguoiDung);
-		req.setAttribute("dsBaiViet", baiVietService.layTatCaBaiViet());
 		req.setAttribute("dsTheLoai", theLoaiService.layTatCaTheLoai());
 		
-		RequestDispatcher rd = req.getRequestDispatcher("dsBaiViet.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("dsTheLoai.jsp");
 		rd.forward(req, resp);
 	}
 }
