@@ -92,9 +92,9 @@
 	            </div>
 	            <div class="">
 	                <label>Nội dung</label>
-	                <textarea class="" name="noiDung" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
+	                <textarea class="" id="noiDungBv" name="noiDungBv" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
 	                <script>
-	                    CKEDITOR.replace('noiDung')
+	                	CKEDITOR.replace("noiDungBv")
 	                </script>
 	            </div>
 	            <div class="">

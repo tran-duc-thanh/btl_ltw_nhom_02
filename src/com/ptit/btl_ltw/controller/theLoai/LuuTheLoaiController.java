@@ -36,6 +36,7 @@ public class LuuTheLoaiController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		resp.setContentType("text/html");
+		req.setCharacterEncoding("UTF-8");
 		
 		String tenTheLoai = req.getParameter("tenTheLoai");
 		String maTheLoai = req.getParameter("maTheLoai");

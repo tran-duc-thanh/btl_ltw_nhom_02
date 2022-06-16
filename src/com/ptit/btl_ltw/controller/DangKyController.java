@@ -53,6 +53,7 @@ public class DangKyController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		resp.setContentType("text/html");
+		req.setCharacterEncoding("UTF-8");
 		
 		String hoTen = req.getParameter("hoTen");
 		String taiKhoan = req.getParameter("taiKhoan");

@@ -44,7 +44,7 @@ public class LuuBaiVietController extends HttpServlet{
 		int theLoai_id = Integer.parseInt(req.getParameter("theLoai"));
 		String tieuDe = req.getParameter("tieuDe");
 		String tomTat = req.getParameter("tomTat");
-		String noiDung = req.getParameter("noiDung");
+		String noiDung = req.getParameter("noiDungBv");
 		String un = req.getParameter("u");
 		NguoiDung nguoiDung = nguoiDungService.layNguoiDungTheoUsername(un);
 		
