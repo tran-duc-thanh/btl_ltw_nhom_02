@@ -22,7 +22,7 @@
 </header>
 
 <nav>
-    <a href="" class="chonVao">Trang chủ</a>
+    <a href="trangChu" class="chonVao">Trang chủ</a>
 	<%
 		List<TheLoai> dsTheLoai = (List<TheLoai>) request.getAttribute("dsTheLoai");
 		for (int i = 0; i < dsTheLoai.size(); i++) {

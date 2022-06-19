@@ -51,6 +51,19 @@
 			}
 			%>
 		</a>
+		<%
+			if (nguoiDung != null) {
+				out.print("<form action='timKiem?u=" + nguoiDung.getUsername() + "' class='timKiem' method='post'>"
+				+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
+				+ "<button type='submit'>Tìm kiếm</button>"
+			    + "</form>");
+			} else {
+				out.print("<form action='timKiem' class='timKiem' method='post'>"
+						+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
+						+ "<button type='submit'>Tìm kiếm</button>"
+					    + "</form>");
+			}
+		%>
 	</nav>
 
 	<div class="thanTrang">
