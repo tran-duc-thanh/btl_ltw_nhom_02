@@ -22,7 +22,7 @@
 </header>
 
 <nav>
-    <a href="trangChu" class="chonVao">Trang chủ</a>
+    <a href="trangChu"><img src='./img/trangChu.png' width='20' height=''20></a>
 	<%
 		List<TheLoai> dsTheLoai = (List<TheLoai>) request.getAttribute("dsTheLoai");
 		for (int i = 0; i < dsTheLoai.size(); i++) {

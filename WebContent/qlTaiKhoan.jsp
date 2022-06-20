@@ -20,14 +20,14 @@
 		<% NguoiDung nguoiDung = (NguoiDung) request.getAttribute("nguoiDung");%>
 		<% 
 			if (nguoiDung != null) {
-				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "'><img src='./img/trangChu.png' width='20' height=''20></a>");
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
 					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 					out.print("<a href='dsTaiKhoan?u=" + nguoiDung.getUsername() + "'>QL Tài Khoản</a>");
 				}
 			} else {
-				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu'><img src='./img/trangChu.png' width='20' height=''20></a>");
 			}
 		%>
 		<%
@@ -56,13 +56,13 @@
 	    <%
 				if (nguoiDung != null) {
 					out.print("<form action='timKiem?u=" + nguoiDung.getUsername() + "' class='timKiem' method='post'>"
-					+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
-					+ "<button type='submit'>Tìm kiếm</button>"
+					+ "<input type='text' class='' name='tuKhoa' placeholder='nhập từ khóa...''>"
+					+ "<button type='submit'>Tìm Kiếm</button>"
 				    + "</form>");
 				} else {
 					out.print("<form action='timKiem' class='timKiem' method='post'>"
-							+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
-							+ "<button type='submit'>Tìm kiếm</button>"
+							+ "<input type='text' class='' name='tuKhoa' placeholder='nhập từ khóa...''>"
+							+ "<button type='submit'>Tìm Kiếm</button>"
 						    + "</form>");
 				}
 		%>
@@ -72,11 +72,11 @@
 	<div class="thanTrang">
 		<div class="noiDung">
 			<% List<NguoiDung> dsNguoiDung = (List<NguoiDung>) request.getAttribute("dsNguoiDung"); %>
-			<form action="themTKAdmin?u=<%out.print(nguoiDung.getUsername());%>" method="post">
-            	<button type="submit">Thêm TK Admin</button>
+			<form class="nutThemMoi" action="themTKAdmin?u=<%out.print(nguoiDung.getUsername());%>" method="post">
+            	<button type="submit"><img src="./img/btnThem.png" width="20" height="20"></button>
         	</form>
 
-			<table class="table table-bordered">
+			<table class="bangDs">
             	<thead>
             		<tr>
 		                <th scope="col">STT</th>
@@ -94,12 +94,12 @@
 							out.println("<form action='khoaMoTaiKhoan?un="+ dsNguoiDung.get(i).getUsername() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
 							
 							if (dsNguoiDung.get(i).getQuyen().equals("ADMIN")) {
-								out.println("<button type='button' class=''>-----</button>");
+								out.println("<button class='nut vang' type='button' class=''><img src='./img/lock.png' width='20' height=''20></button>");
 							} else {
 								if (dsNguoiDung.get(i).getTrangThai() == 1) {
-									out.println("<button type='submit' class=''>Khóa</button>");
+									out.println("<button class='nut do' type='submit' class=''><img src='./img/btnKhoa.png' width='20' height=''20></button>");
 								} else {
-									out.println("<button type='submit' class=''>Mở</button>");
+									out.println("<button class='nut xanhLa' type='submit' class=''><img src='./img/btnMo.png' width='20' height=''20></button>");
 								}
 							}
 							

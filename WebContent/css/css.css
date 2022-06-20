@@ -167,9 +167,93 @@ footer ul li {
     padding: 0.2rem;
 }
 
+table, th, td{
+    border:1px solid black;
+    text-align: center;
+    padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+    
+}
+
+table td form {
+	display: inline;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+table{
+	width: 100%;
+    border-collapse:collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .themSuaBV {
 	width: 100%;
 	height: autu;
 	padding-top: 5px;
 	padding-bottom: 5px;
+}
+
+.nutThemMoi {
+	margin-top: 20px;
+}
+
+.nutThemMoi button {
+	background-color: blue;
+	font-weight: bold;
+	color: white;
+	padding: 10px;
+}
+
+.nut {
+	color: black;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.vang {background-color: yellow;}
+
+.xanhLa {background-color: green; margin-bottom: 10px;}
+
+.do {background-color: red;}
+
+.themSuaTL {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.maTL {
+	margin-left: 3.5px;
+}
+
+.themAD {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.hoten {
+	margin-left: 47px;
+}
+
+.matkhau {
+	margin-left: 32px;
+}
+
+.timKiem input {
+	height: 25px;
+}
+
+.timKiem button {
+	height: 29px;
+	text-align: center;
+	margin-left: 2px;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.timKiem {
+	text-align: center;
 }

@@ -19,14 +19,14 @@
 		<% NguoiDung nguoiDung = (NguoiDung) request.getAttribute("nguoiDung");%>
 		<% 
 			if (nguoiDung != null) {
-				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "'><img src='./img/trangChu.png' width='20' height=''20></a>");
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
 					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 					out.print("<a href='dsTaiKhoan?u=" + nguoiDung.getUsername() + "'>QL Tài Khoản</a>");
 				}
 			} else {
-				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu'><img src='./img/trangChu.png' width='20' height=''20></a>");
 			}
 		%>
 		<%
@@ -55,13 +55,13 @@
 		<%
 			if (nguoiDung != null) {
 				out.print("<form action='timKiem?u=" + nguoiDung.getUsername() + "' class='timKiem' method='post'>"
-				+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
-				+ "<button type='submit'>Tìm kiếm</button>"
+				+ "<input type='text' class='' name='tuKhoa' placeholder='nhập từ khóa...''>"
+				+ "<button type='submit'>Tìm Kiếm</button>"
 			    + "</form>");
 			} else {
 				out.print("<form action='timKiem' class='timKiem' method='post'>"
-						+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
-						+ "<button type='submit'>Tìm kiếm</button>"
+						+ "<input type='text' class='' name='tuKhoa' placeholder='nhập từ khóa...''>"
+						+ "<button type='submit'>Tìm Kiếm</button>"
 					    + "</form>");
 			}
 		%>
@@ -70,11 +70,11 @@
 
 	<div class="thanTrang">
 		<div class="noiDung">
-			<form action="themBaiViet?u=<%out.print(nguoiDung.getUsername()); %>" method="post">
-            	<button type="submit">Thêm bài viết</button>
+			<form class="nutThemMoi" action="themBaiViet?u=<%out.print(nguoiDung.getUsername()); %>" method="post">
+            	<button type="submit"><img src="./img/btnThem.png" width="20" height="20"></button>
         	</form>
 
-			<table class="table table-bordered">
+			<table class="bangDs">
             	<thead>
             		<tr>
 		                <th scope="col">STT</th>
@@ -91,10 +91,10 @@
 							out.println("<td>" + dsBaiViet.get(i).getTieuDe() + "</td>");
 							out.println("<td>");
 							out.println("<form action='suaBaiViet?id="+ dsBaiViet.get(i).getId() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
-							out.println("<button type='submit' class=''>Sửa</button>");
+							out.println("<button class='nut vang' type='submit' class=''><img src='./img/btnSua.png' width='20' height=''20></button>");
 							out.println("</form>");
 							out.println("<form action='xoaBaiViet?id="+ dsBaiViet.get(i).getId() + "&u="+ nguoiDung.getUsername() +"' method='post' class=''>");
-							out.println("<button type='submit' class=''>Xóa</button>");
+							out.println("<button id='btnXoaBV' class='nut do' type='submit' class=''><img src='./img/btnXoa.png' width='20' height=''20></button>");
 							out.println("</form>");
 							out.println("</td>");
 							out.println("</tr>");
@@ -104,7 +104,7 @@
         </table>
 		</div>
 	</div>
-
+	
 	<footer>
 		<ul>
 			<li>

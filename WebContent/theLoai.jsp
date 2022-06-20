@@ -26,14 +26,14 @@
 		<% NguoiDung nguoiDung = (NguoiDung) request.getAttribute("nguoiDung");%>
 		<% 
 			if (nguoiDung != null) {
-				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu?u=" + nguoiDung.getUsername() + "'><img src='./img/trangChu.png' width='20' height=''20></a>");
 				if (nguoiDung.getQuyen().equals("ADMIN")) {
 					out.print("<a href='dsBaiViet?u=" + nguoiDung.getUsername() + "'>QL Bài Viết</a>");
 					out.print("<a href='dsTheLoai?u=" + nguoiDung.getUsername() + "'>QL Thể Loại</a>");
 					out.print("<a href='dsTaiKhoan?u=" + nguoiDung.getUsername() + "'>QL Tài Khoản</a>");
 				}
 			} else {
-				out.print("<a href='trangChu' class='chonVao'>Trang chủ</a>");
+				out.print("<a href='trangChu'><img src='./img/trangChu.png' width='20' height=''20></a>");
 			}
 		%>
 		<%
@@ -62,13 +62,13 @@
 	    <%
 				if (nguoiDung != null) {
 					out.print("<form action='timKiem?u=" + nguoiDung.getUsername() + "' class='timKiem' method='post'>"
-					+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
-					+ "<button type='submit'>Tìm kiếm</button>"
+					+ "<input type='text' class='' name='tuKhoa' placeholder='nhập từ khóa...''>"
+					+ "<button type='submit'>Tìm Kiếm</button>"
 				    + "</form>");
 				} else {
 					out.print("<form action='timKiem' class='timKiem' method='post'>"
-							+ "<input type='text' class='' name='tuKhoa' placeholder='Search anything...''>"
-							+ "<button type='submit'>Tìm kiếm</button>"
+							+ "<input type='text' class='' name='tuKhoa' placeholder='nhập từ khóa...''>"
+							+ "<button type='submit'>Tìm Kiếm</button>"
 						    + "</form>");
 				}
 		%>
