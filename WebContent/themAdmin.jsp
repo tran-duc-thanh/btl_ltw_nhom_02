@@ -54,6 +54,7 @@
 			}
 			%>
 		</a>
+		<a>
 	    <%
 				if (nguoiDung != null) {
 					out.print("<form action='timKiem?u=" + nguoiDung.getUsername() + "' class='timKiem' method='post'>"
@@ -67,6 +68,7 @@
 						    + "</form>");
 				}
 		%>
+		</a>
 	</nav>
 
 	<div class="thanTrang">

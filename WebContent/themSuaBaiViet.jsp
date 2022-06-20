@@ -53,6 +53,7 @@
 			}
 			%>
 		</a>
+		<a>
 	    <%
 				if (nguoiDung != null) {
 					out.print("<form action='timKiem?u=" + nguoiDung.getUsername() + "' class='timKiem' method='post'>"
@@ -66,6 +67,7 @@
 						    + "</form>");
 				}
 		%>
+		</a>
 	</nav>
 
 	<div class="thanTrang">
@@ -73,9 +75,9 @@
 			<% BaiViet baiViet = (BaiViet) request.getAttribute("baiViet"); %>
 			<form action="luuBaiViet?u=<%out.print(nguoiDung.getUsername()); if (baiViet != null){out.print("&id="+baiViet.getId());}%>"
 				method="post" style="padding-left: 24px; padding-right: 24px; padding-top: 32px;">
-	            <div class="">
+	            <div class="themSuaBV">
 	                <label>Thể loại</label>
-	                <select name="theLoai">
+	                <select name="theLoai" class="themSuaBV">
 	                    
 	                    <%
 	                    	if (baiViet == null) {
@@ -95,22 +97,22 @@
 	                    %>
 	                </select>
 	            </div>
-	            <div class="">
+	            <div class="themSuaBV">
 	                <label>Tiêu đề</label>
-	                <input type="text" value="<%if (baiViet != null) {out.print(baiViet.getTieuDe());} %>" class="" name="tieuDe" required>
+	                <input type="text" value="<%if (baiViet != null) {out.print(baiViet.getTieuDe());} %>" class="themSuaBV" name="tieuDe" required>
 	            </div>
-	            <div class="">
+	            <div class="themSuaBV">
 	                <label>Tóm tắt</label>
-	                <textarea class="" value="" name="tomTat" rows="3" required><%if (baiViet != null) {out.print(baiViet.getTomTat());} %></textarea>
+	                <textarea class="themSuaBV" value="" name="tomTat" rows="3" required><%if (baiViet != null) {out.print(baiViet.getTomTat());} %></textarea>
 	            </div>
-	            <div class="">
+	            <div class="themSuaBV">
 	                <label>Nội dung</label>
-	                <textarea class="" id="noiDungBv" name="noiDungBv" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
+	                <textarea class="themSuaBV" id="noiDungBv" name="noiDungBv" rows="20" required><%if (baiViet != null) {out.print(baiViet.getNoiDung());} %></textarea>
 	                <script>
 	                	CKEDITOR.replace("noiDungBv")
 	                </script>
 	            </div>
-	            <div class="">
+	            <div class="themSuaBV">
 	                <button type="submit" class="">Lưu</button>
 	            </div>
         	</form>
